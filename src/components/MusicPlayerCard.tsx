@@ -19,13 +19,15 @@ const MusicPlayerCard = () => {
     audio.addEventListener("timeupdate", handleTimeUpdate);
 
     // Try to autoplay when the component mounts so music starts when the user opens the site
+    // This may be blocked by browser autoplay policies, which is OK – user can still press play.
     audio
       .play()
       .then(() => {
+        console.log("[MusicPlayerCard] Autoplay succeeded");
         setIsPlaying(true);
       })
       .catch(() => {
-        // Ignore autoplay errors – user can still press play manually if the browser blocks it
+        console.warn("[MusicPlayerCard] Autoplay blocked by browser");
       });
 
     return () => {
@@ -35,6 +37,7 @@ const MusicPlayerCard = () => {
   }, []);
 
   const togglePlay = () => {
+    console.log("[MusicPlayerCard] togglePlay clicked, isPlaying=", isPlaying);
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -51,11 +54,15 @@ const MusicPlayerCard = () => {
         }
       }
     } else {
-      audio.play().then(() => {
-        setIsPlaying(true);
-      }).catch(() => {
-        // ignore autoplay errors
-      });
+      audio
+        .play()
+        .then(() => {
+          console.log("[MusicPlayerCard] Manual play succeeded");
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.error("[MusicPlayerCard] Manual play failed", err);
+        });
     }
   };
 
