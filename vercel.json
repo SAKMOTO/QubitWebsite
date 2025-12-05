@@ -8,19 +8,5 @@
         "distDir": "dist"
       }
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)\\.(css|js|png|jpg|jpeg|gif|svg|ico|mp3|wav|ogg)",
-      "dest": "/$1.$2"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }

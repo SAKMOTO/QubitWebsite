@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const AUDIO_SRC = "/all-the-stars.mp3"; // Place your All the Stars audio file in public/all-the-stars.mp3
+// Use a direct file URL so it works even if the Vercel static routing misses the public mp3.
+// If you change where the file is hosted, just update this URL.
+const AUDIO_SRC =
+  "https://raw.githubusercontent.com/SAKMOTO/QubitWebsite/main/public/all-the-stars.mp3";
 
 const MusicPlayerCard = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
