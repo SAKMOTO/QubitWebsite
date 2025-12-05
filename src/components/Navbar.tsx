@@ -24,7 +24,7 @@ const Navbar = () => {
     });
 
     const downloadUrl =
-      "https://drive.google.com/uc?export=download&id=1fuDwHOP-ZvQR3hmsJIw3YDtm8z937bji";
+      "https://drive.google.com/file/d/1fuDwHOP-ZvQR3hmsJIw3YDtm8z937bji/view?usp=sharing";
 
     window.open(downloadUrl, "_blank");
   };
